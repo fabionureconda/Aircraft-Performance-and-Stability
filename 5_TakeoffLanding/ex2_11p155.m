@@ -1,0 +1,27 @@
+W = 50000;
+T = 14500;
+Cd0 = 0.02;
+k = 0.04;
+Clmax = 1.2;
+S = 30;
+h_obs = 15;
+mu = 0.05;
+rho = 1.225;
+g = 9.81;
+
+vstall = (2*W/(rho*S*Clmax))^0.5;
+v1 = 1.2*vstall;
+F0 = T-mu*W;
+Clv1 = mu/(2*k);
+Cdv1 = Cd0 + k*Clv1^2;
+Dv1 = (1/2)*rho*S*v1^2*(Cdv1);
+F1 = T-Dv1;
+s1 = W/(2*g)*v1^2/(F1-F0)*log(F1/F0);
+gamma = (T-Dv1)/W;
+s2 = h_obs/(tan(gamma));
+s = s1+s2
+a = F0;
+b = (F1-F0)/(v1^2);
+t1 = (W/(g*(a*b)^0.5))*atan((b/a)^0.5*v1);
+t2 = s2/(v1*cos(gamma));
+t = t1+t2
