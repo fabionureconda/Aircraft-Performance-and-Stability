@@ -1,0 +1,29 @@
+S = 30;
+W = 1500*30;
+Clmax = 1.5;
+mac = 3;
+xac = 0.25;
+Cmacw = -0.05;
+alfa0l_w = -2.5*pi/180;
+iw = -2*pi/180;
+it = 0;
+tau = 1;
+aw = 0.1*180/pi;
+Cmf0 = 0.05;
+dCmfdCL = 0.12;
+at = 0.08*180/pi;
+eps = 0.4;
+lt_c = 2.5;
+nt = 0.8;
+
+Hn = 0; 
+N0 = 0.35;
+V1 =(N0-xac+Cmf0)/(at/aw*(1-eps)*nt)
+St = V1*S/lt_c
+
+Cm_d = -at*V1*nt*tau;
+de_0 = (Cmacw+Cmf0-at*(alfa0l_w-iw+it))*V1*nt/(-Cm_d);
+de_0 = de_0*pi/180
+xcog_f = 0.2;
+p = (xcog_f-N0)*(Clmax/Cm_d);
+de_min = de_0+p
